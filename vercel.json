@@ -1,14 +1,44 @@
 {
-  "framework": null,
-  "installCommand": "composer install --no-dev --optimize-autoloader && npm install",
-  "buildCommand": "npm run build",
-  "outputDirectory": "public",
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "rm -rf public/build && npm run build",
   "functions": {
     "api/index.php": {
       "runtime": "vercel-php@0.9.0"
     }
   },
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/api/index.php" }
-  ]
+  "routes": [
+    {
+      "src": "/build/(.*)",
+      "dest": "/public/build/$1"
+    },
+    {
+      "src": "/favicon.ico",
+      "dest": "/public/favicon.ico"
+    },
+    {
+      "src": "/favicon.jpg",
+      "dest": "/public/favicon.jpg"
+    },
+    {
+      "src": "/robots.txt",
+      "dest": "/public/robots.txt"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.php"
+    }
+  ],
+  "env": {
+    "APP_ENV": "production",
+    "APP_DEBUG": "false",
+    "LOG_CHANNEL": "stderr",
+    "CACHE_STORE": "array",
+    "SESSION_DRIVER": "database",
+    "VIEW_COMPILED_PATH": "/tmp/views",
+    "APP_CONFIG_CACHE": "/tmp/config.php",
+    "APP_EVENTS_CACHE": "/tmp/events.php",
+    "APP_PACKAGES_CACHE": "/tmp/packages.php",
+    "APP_ROUTES_CACHE": "/tmp/routes.php",
+    "APP_SERVICES_CACHE": "/tmp/services.php"
+}
 }
