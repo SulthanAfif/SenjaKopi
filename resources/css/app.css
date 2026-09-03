@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html { scroll-behavior: smooth; }
+    body { @apply bg-[#fdfbf7] text-stone-800 antialiased; }
+}
+
+@layer components {
+    .sk-btn { @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 font-semibold transition duration-200 focus:outline-none focus:ring-2 focus:ring-[#c08246]/40; }
+    .sk-btn-primary { @apply sk-btn bg-[#7a4b2d] text-white hover:bg-[#5f3922]; }
+    .sk-btn-soft { @apply sk-btn bg-[#f4e7dc] text-[#6a4028] hover:bg-[#ead7c8]; }
+    .sk-input { @apply w-full rounded-xl border-stone-200 bg-white px-4 py-3 text-sm shadow-sm outline-none transition focus:border-[#c08246] focus:ring-2 focus:ring-[#c08246]/20; }
+    .sk-card { @apply rounded-3xl border border-stone-200/80 bg-white shadow-[0_10px_35px_rgba(76,46,30,.06)]; }
+    .admin-card { @apply rounded-2xl border border-stone-200 bg-white shadow-sm; }
+}
