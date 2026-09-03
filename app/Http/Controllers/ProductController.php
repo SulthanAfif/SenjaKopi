@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProductController extends Controller
@@ -43,12 +44,22 @@ class ProductController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
             'price' => ['required', 'integer', 'min:0'],
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,webp', 'max:2048'],
             'image_url' => ['nullable', 'url'],
         ]);
 
         $data['slug'] = Str::slug($data['name']);
-        $data['image_url'] = $data['image_url'] ?? 'https://placehold.co/800x600/4b2e20/fef3c7?text='.urlencode($data['name']);
         $data['is_available'] = $request->boolean('is_available');
+
+        // Handle file upload via file explorer
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('products', 'public');
+            $data['image_url'] = Storage::url($path);
+        } else {
+            $data['image_url'] = $data['image_url'] ?? 'https://placehold.co/800x600/4b2e20/fef3c7?text='.urlencode($data['name']);
+        }
+
+        unset($data['image']);
         Product::create($data);
 
         return redirect()->route('admin.products.index')->with('success', 'Produk berhasil ditambahkan.');
@@ -67,11 +78,28 @@ class ProductController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
             'price' => ['required', 'integer', 'min:0'],
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,webp', 'max:2048'],
             'image_url' => ['nullable', 'url'],
         ]);
 
         $data['slug'] = Str::slug($data['name']);
         $data['is_available'] = $request->boolean('is_available');
+
+        // Handle file upload via file explorer
+        if ($request->hasFile('image')) {
+            // Delete old local image if it was stored in storage
+            if ($product->image_url && str_starts_with($product->image_url, '/storage/')) {
+                $oldPath = str_replace('/storage/', '', $product->image_url);
+                Storage::disk('public')->delete($oldPath);
+            }
+            $path = $request->file('image')->store('products', 'public');
+            $data['image_url'] = Storage::url($path);
+        } elseif ($request->filled('image_url')) {
+            $data['image_url'] = $data['image_url'];
+        }
+        // else keep existing
+
+        unset($data['image']);
         $product->update($data);
 
         return redirect()->route('admin.products.index')->with('success', 'Produk berhasil diperbarui.');
@@ -86,6 +114,11 @@ class ProductController extends Controller
 
     public function destroy(Product $product)
     {
+        // Delete local image if exists
+        if ($product->image_url && str_starts_with($product->image_url, '/storage/')) {
+            $oldPath = str_replace('/storage/', '', $product->image_url);
+            Storage::disk('public')->delete($oldPath);
+        }
         $product->delete();
         return redirect()->route('admin.products.index')->with('success', 'Produk berhasil dihapus.');
     }
