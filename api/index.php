@@ -1,5 +1,23 @@
 <?php
 
+// DEBUG SEMENTARA: tangkap fatal error PHP yang biasanya "senyap" di
+// runtime PHP built-in server Vercel (tidak sempat dirender Laravel).
+// Ini bikin pesan error aslinya kelihatan di browser. HAPUS blok ini
+// setelah masalah 500 selesai di-debug, karena menampilkan detail
+// internal server ke publik tidak aman untuk production jangka panjang.
+register_shutdown_function(function () {
+    $error = error_get_last();
+    if ($error && in_array($error['type'], [E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR], true)) {
+        if (! headers_sent()) {
+            http_response_code(500);
+            header('Content-Type: text/plain; charset=utf-8');
+        }
+        echo "=== FATAL ERROR TERTANGKAP SHUTDOWN HANDLER ===\n";
+        echo 'Pesan : '.$error['message']."\n";
+        echo 'File  : '.$error['file'].':'.$error['line']."\n";
+    }
+});
+
 // Entry point untuk Vercel serverless function.
 // Redirect storage Laravel ke /tmp (satu-satunya folder yang writable
 // di runtime serverless Vercel) sebelum aplikasi di-boot.
