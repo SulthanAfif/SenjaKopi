@@ -1,59 +1,242 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# SenjaKopi ☕
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+SenjaKopi adalah aplikasi pemesanan kopi berbasis web yang dibangun menggunakan Laravel. Aplikasi ini memungkinkan pelanggan melihat menu, mencari produk, memilih kategori, menambahkan menu ke keranjang, melakukan checkout, serta melihat dan mengelola pesanan.
 
-## About Laravel
+SenjaKopi juga dilengkapi dengan halaman admin untuk mengelola produk, kategori, ketersediaan menu, serta transaksi pelanggan.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Demo
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+🌐 **Live Website:**
+https://senja-kopi-alpha.vercel.app
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Repository
 
-## Learning Laravel
+📦 **GitHub:**
+https://github.com/SulthanAfif/SenjaKopi
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## Features
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Customer
 
-## Laravel Sponsors
+* Menampilkan daftar menu yang tersedia
+* Melihat detail menu
+* Filter menu berdasarkan kategori
+* Mencari menu berdasarkan nama atau deskripsi
+* Pagination daftar menu
+* Menambahkan menu ke keranjang
+* Mengubah jumlah menu dalam keranjang
+* Menghapus menu dari keranjang
+* Checkout pesanan
+* Memilih metode pembayaran:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+  * QRIS
+  * Cash
+  * Transfer
+* Mendapatkan nomor antrean setelah checkout
+* Melihat daftar pesanan
+* Melihat detail pesanan
+* Membatalkan pesanan yang masih berstatus pending
+* Memesan kembali (reorder) pesanan sebelumnya
+* Mengelola profil pengguna
 
-### Premium Partners
+Fitur katalog, pencarian, kategori, keranjang, checkout, dan pengelolaan pesanan tersedia pada route aplikasi dan controller terkait.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### Admin
 
-## Contributing
+* Dashboard admin
+* Mengelola kategori
+* Menambah, melihat, mengubah, dan menghapus produk
+* Mengatur ketersediaan produk
+* Melihat transaksi
+* Filter transaksi berdasarkan:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+  * Status
+  * Metode pembayaran
+  * Tanggal
+* Mencari transaksi berdasarkan nomor antrean atau data pengguna
+* Melihat detail transaksi
+* Mengubah status pesanan
 
-## Code of Conduct
+Akses admin dilindungi menggunakan authentication dan middleware `is_admin`.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Payment Methods
 
-## Security Vulnerabilities
+SenjaKopi menyediakan beberapa pilihan metode pembayaran:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+* **QRIS**
+* **Cash**
+* **Transfer**
 
-## License
+Metode pembayaran divalidasi saat proses checkout sebelum pesanan dibuat.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Order Status
+
+Status pesanan yang digunakan dalam aplikasi:
+
+* `pending`
+* `diproses`
+* `selesai`
+* `dibatalkan`
+
+Pelanggan hanya dapat membatalkan pesanan yang masih berstatus `pending`.
+
+## Technologies
+
+* **Laravel 12**
+* **PHP 8.2+**
+* **Tailwind CSS**
+* **Vite**
+* **Alpine.js**
+* **MySQL / Database Laravel**
+* **JavaScript**
+
+Dependensi utama project tercatat menggunakan Laravel 12, PHP ^8.2, Tailwind CSS, Vite, dan Alpine.js.
+
+## Installation
+
+Clone repository:
+
+```bash
+git clone https://github.com/SulthanAfif/SenjaKopi.git
+```
+
+Masuk ke folder project:
+
+```bash
+cd SenjaKopi
+```
+
+Install dependency Laravel:
+
+```bash
+composer install
+```
+
+Install dependency frontend:
+
+```bash
+npm install
+```
+
+Buat file `.env`:
+
+```bash
+cp .env.example .env
+```
+
+Generate application key:
+
+```bash
+php artisan key:generate
+```
+
+Konfigurasikan database pada file `.env`.
+
+Jalankan migration:
+
+```bash
+php artisan migrate
+```
+
+Jalankan aplikasi Laravel:
+
+```bash
+php artisan serve
+```
+
+Pada terminal lain, jalankan Vite:
+
+```bash
+npm run dev
+```
+
+Untuk membuat build frontend:
+
+```bash
+npm run build
+```
+
+Project juga menyediakan script setup dan development melalui Composer.
+
+## Screenshots
+
+### Home
+
+Tambahkan screenshot halaman utama SenjaKopi di sini.
+
+### Menu
+
+Tambahkan screenshot halaman daftar menu di sini.
+
+### Detail Menu
+
+Tambahkan screenshot halaman detail menu di sini.
+
+### Keranjang
+
+Tambahkan screenshot halaman keranjang di sini.
+
+### Checkout
+
+Tambahkan screenshot halaman checkout di sini.
+
+### Pesanan
+
+Tambahkan screenshot halaman pesanan di sini.
+
+### Admin Dashboard
+
+Tambahkan screenshot dashboard admin di sini.
+
+### Admin Transactions
+
+Tambahkan screenshot halaman transaksi admin di sini.
+
+## Project Structure
+
+Project menggunakan struktur Laravel dengan komponen utama:
+
+```text
+SenjaKopi/
+├── app/
+├── bootstrap/
+├── config/
+├── database/
+├── public/
+├── resources/
+├── routes/
+├── storage/
+├── tests/
+├── artisan
+├── composer.json
+├── package.json
+├── vite.config.js
+└── tailwind.config.js
+```
+
+Struktur repository saat ini juga mencakup folder `app`, `database`, `resources`, `routes`, `storage`, dan `tests`.
+
+## Testing
+
+Pengujian dilakukan dengan menjalankan fitur utama aplikasi, yaitu:
+
+* Registrasi dan login pengguna
+* Menampilkan menu
+* Pencarian menu
+* Filter kategori
+* Menambahkan produk ke keranjang
+* Mengubah jumlah produk
+* Menghapus produk dari keranjang
+* Checkout
+* Pemilihan metode pembayaran
+* Melihat pesanan
+* Membatalkan pesanan
+* Reorder pesanan
+* Pengelolaan produk oleh admin
+* Pengelolaan kategori oleh admin
+* Pengelolaan transaksi oleh admin
+* Perubahan status pesanan
+
+## Status
+
+✅ **Project selesai dikembangkan dan telah dideploy sebagai aplikasi web SenjaKopi.**
