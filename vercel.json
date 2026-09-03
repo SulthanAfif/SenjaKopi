@@ -4,18 +4,16 @@
   "functions": {
     "api/index.php": {
       "runtime": "vercel-php@0.9.0"
-    },
-    "api/ping.php": {
-      "runtime": "vercel-php@0.9.0"
-    },
-    "api/boot-test.php": {
-      "runtime": "vercel-php@0.9.0"
     }
   },
   "routes": [
     {
       "src": "/build/(.*)",
       "dest": "/public/build/$1"
+    },
+    {
+      "src": "/css/(.*)",
+      "dest": "/public/css/$1"
     },
     {
       "src": "/favicon.ico",
@@ -28,14 +26,6 @@
     {
       "src": "/robots.txt",
       "dest": "/public/robots.txt"
-    },
-    {
-      "src": "/ping",
-      "dest": "/api/ping.php"
-    },
-    {
-      "src": "/boot-test",
-      "dest": "/api/boot-test.php"
     },
     {
       "src": "/(.*)",
@@ -54,5 +44,5 @@
     "APP_PACKAGES_CACHE": "/tmp/packages.php",
     "APP_ROUTES_CACHE": "/tmp/routes.php",
     "APP_SERVICES_CACHE": "/tmp/services.php"
-}
+  }
 }
