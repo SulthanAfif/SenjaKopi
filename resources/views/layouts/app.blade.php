@@ -1,2 +1,2 @@
 <!DOCTYPE html>
-<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{{ config('app.name','SenjaKopi') }}</title><link rel="stylesheet" href="{{ asset('css/senjakopi-fallback.css') }}"><script src="https://cdn.tailwindcss.com"></script>@vite(['resources/css/app.css','resources/js/app.js'])</head><body><main>{{ $slot }}</main></body></html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{{ config('app.name','SenjaKopi') }}</title><link rel="stylesheet" href="{{ asset('css/senjakopi-fallback.css') }}">@vite(['resources/css/app.css','resources/js/app.js'])</head><body><main>{{ $slot }}</main></body></html>
