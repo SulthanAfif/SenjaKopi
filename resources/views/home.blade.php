@@ -2,15 +2,49 @@
 
 @section('content')
 <section class="relative overflow-hidden">
-    <div class="mx-auto grid max-w-7xl items-center gap-10 px-4 pb-10 pt-12 sm:px-6 md:grid-cols-[1.2fr_.8fr] md:pb-16 md:pt-16 lg:px-8">
-        <div>
-            <span class="inline-flex rounded-full bg-[#f3e5d7] px-3 py-1 text-xs font-bold uppercase tracking-[.18em] text-[#7a4b2d]">Freshly brewed daily</span>
-            <h1 class="mt-5 max-w-3xl text-4xl font-black leading-tight tracking-tight text-[#3b281e] sm:text-5xl lg:text-6xl">Seduh yang enak,<br><span class="text-[#c08246]">jalani hari dengan tenang.</span></h1>
-            <p class="mt-5 max-w-2xl text-base leading-7 text-stone-500 sm:text-lg">Temukan kopi favoritmu, pesan tanpa ribet, dan pantau nomor antrian langsung dari ponsel maupun desktop.</p>
-            <div class="mt-7 flex flex-col gap-3 sm:flex-row"><a href="#menu" class="sk-btn-primary px-5 py-3">Lihat Menu</a><a href="{{ auth()->check() ? route('customer.orders') : route('register') }}" class="sk-btn-soft px-5 py-3">{{ auth()->check() ? 'Pantau Pesanan' : 'Buat Akun' }}</a></div>
-            <div class="mt-7 grid max-w-xl grid-cols-3 gap-4 text-center sm:text-left"><div><p class="text-2xl font-black text-stone-900">30+</p><p class="text-xs text-stone-500">Pilihan menu</p></div><div><p class="text-2xl font-black text-stone-900">09–22</p><p class="text-xs text-stone-500">Jam layanan</p></div><div><p class="text-2xl font-black text-stone-900">100%</p><p class="text-xs text-stone-500">Order terpantau</p></div></div>
+    <div class="mx-auto grid max-w-7xl items-center gap-8 px-4 pb-10 pt-10 sm:px-6 md:grid-cols-[1.2fr_.8fr] md:gap-10 md:pb-16 md:pt-16 lg:px-8">
+        
+        {{-- Teks --}}
+        <div class="order-2 md:order-1">
+            <span class="inline-flex rounded-full bg-[#f3e5d7] px-3 py-1 text-xs font-bold uppercase tracking-[.18em] text-[#7a4b2d]">
+                Freshly brewed daily
+            </span>
+            <h1 class="mt-5 max-w-3xl text-4xl font-black leading-tight tracking-tight text-[#3b281e] sm:text-5xl lg:text-6xl">
+                Seduh yang enak,<br>
+                <span class="text-[#c08246]">jalani hari dengan tenang.</span>
+            </h1>
+            <p class="mt-5 max-w-2xl text-base leading-7 text-stone-500 sm:text-lg">
+                Temukan kopi favoritmu, pesan tanpa ribet, dan pantau nomor antrian langsung dari ponsel maupun desktop.
+            </p>
+            <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+                <a href="#menu" class="sk-btn-primary px-5 py-3">Lihat Menu</a>
+                <a href="{{ auth()->check() ? route('customer.orders') : route('register') }}" class="sk-btn-soft px-5 py-3">
+                    {{ auth()->check() ? 'Pantau Pesanan' : 'Buat Akun' }}
+                </a>
+            </div>
+            <div class="mt-7 grid max-w-xl grid-cols-3 gap-4 text-center sm:text-left">
+                <div>
+                    <p class="text-2xl font-black text-stone-900">30+</p>
+                    <p class="text-xs text-stone-500">Pilihan menu</p>
+                </div>
+                <div>
+                    <p class="text-2xl font-black text-stone-900">09–22</p>
+                    <p class="text-xs text-stone-500">Jam layanan</p>
+                </div>
+                <div>
+                    <p class="text-2xl font-black text-stone-900">100%</p>
+                    <p class="text-xs text-stone-500">Order terpantau</p>
+                </div>
+            </div>
         </div>
-        <div class="relative hidden md:block"><div class="absolute -inset-4 rounded-[3rem] bg-[#f3e5d7]"></div><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=85" alt="Kopi SenjaKopi" class="relative h-[430px] w-full rounded-[2.5rem] object-cover shadow-2xl"></div>
+
+        {{-- Gambar (sekarang muncul di mobile juga) --}}
+        <div class="order-1 md:order-2 relative">
+            <div class="absolute -inset-3 md:-inset-4 rounded-[2rem] md:rounded-[3rem] bg-[#f3e5d7]"></div>
+            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=85"
+                 alt="Kopi SenjaKopi"
+                 class="relative h-64 w-full rounded-[1.75rem] object-cover shadow-xl sm:h-80 md:h-[430px] md:rounded-[2.5rem] md:shadow-2xl">
+        </div>
     </div>
 </section>
 
