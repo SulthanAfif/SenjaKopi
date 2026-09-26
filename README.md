@@ -158,39 +158,6 @@ npm run build
 
 Project juga menyediakan script setup dan development melalui Composer.
 
-## Screenshots
-
-### Home
-
-Tambahkan screenshot halaman utama SenjaKopi di sini.
-
-### Menu
-
-Tambahkan screenshot halaman daftar menu di sini.
-
-### Detail Menu
-
-Tambahkan screenshot halaman detail menu di sini.
-
-### Keranjang
-
-Tambahkan screenshot halaman keranjang di sini.
-
-### Checkout
-
-Tambahkan screenshot halaman checkout di sini.
-
-### Pesanan
-
-Tambahkan screenshot halaman pesanan di sini.
-
-### Admin Dashboard
-
-Tambahkan screenshot dashboard admin di sini.
-
-### Admin Transactions
-
-Tambahkan screenshot halaman transaksi admin di sini.
 
 ## Project Structure
 
